@@ -1,0 +1,52 @@
+<div class="container">
+  <div class="title">
+    <h1>Todo on Rails</h1>
+  </div>
+  
+  <div class="row">
+    <div class="todo-tags col-md-4 col-sm-4">
+      <% @tags.each do |tag| %>
+        <% if tag.to_s == 'Urgent' %>
+          <h4><span class="label label-danger"><%= tag %></span></h4>
+        <% elsif tag.to_s == 'Important' or tag.to_s == 'ASAP' %>
+          <h4><span class="label label-warning"><%= tag %></span></h4>
+        <% else %>
+          <h4><span class="label label-info"><%= tag %></span></h4>
+        <% end %>
+      <% end %>
+    </div>
+    <div class="todo-list col-md-8 col-sm-8">
+      <%= render partial: 'new', locals: {todo: @todo} %>
+      <div class="todo-active panel panel-warning">
+        <div class="panel-heading">
+          <h3 class="panel-title">Pending Tasks <span class="todo-pending-count badge pull-right"><%= @todos.active.length %></span></h3>
+        </div>
+        <table class="table table-hover">
+          <tbody>
+              <% @todos.active.each do |task| %>
+              <%= render task %>
+              <% end %>
+          </tbody>
+        </table>
+        <div class="panel-footer">
+          <span class="todo-pending-count"><%= @todos.active.length %></span> remaining
+        </div>
+      </div>
+      <div class="todo-done panel panel-success">
+        <div class="panel-heading">
+          <h3 class="panel-title">Completed Tasks <span class="todo-done-count badge pull-right"><%= @todos.done.length %></span></h3>
+        </div>
+        <table class="table table-hover">
+          <tbody>
+            <% @todos.done.each do |task| %>
+            <%= render task %>
+            <% end %>
+          </tbody>
+        </table>
+        <div class="panel-footer">
+          <span class="todo-done-count"><%= @todos.done.length %></span> completed
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

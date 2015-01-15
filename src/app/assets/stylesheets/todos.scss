@@ -1,0 +1,54 @@
+// Place all the styles related to the todos controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+body {
+  background: image-url('bg.png');
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.header,
+.footer {
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 730px;
+  }
+}
+
+.todo-new {
+  margin-bottom: 20px;
+}
+
+.todo-list tr td {
+  cursor: pointer;
+}
+
+#pending-tags {
+  text-align: center;
+}
+
+td.todo-tick, td.todo-delete {
+  text-align: center;
+}
+
+td.todo-title {
+  width: 75%;
+}
+
+@media screen and (min-width: 768px) {
+  /* Remove the padding we set earlier */
+  .header,
+  .footer {
+    padding-right: 0;
+    padding-left: 0;
+  }
+  /* Space out the masthead */
+  .header {
+    margin-bottom: 30px;
+  }
+}
