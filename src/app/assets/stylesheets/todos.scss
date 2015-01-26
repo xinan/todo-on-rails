@@ -6,6 +6,7 @@ body {
   background: image-url('bg.png');
   padding-top: 20px;
   padding-bottom: 20px;
+  margin-bottom: 60px;
 }
 
 .header,
@@ -14,10 +15,35 @@ body {
   padding-left: 15px;
 }
 
+.footer {
+  text-align: center;
+  padding-top: 18px;
+  color: #777;
+  border-top: 1px solid #e5e5e5;
+}
+
 @media (min-width: 768px) {
   .container {
     max-width: 730px;
   }
+}
+
+.label {
+  display: inline-block;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-all;
+}
+
+.tag-filter {
+  padding-left: 16px;
+  font-size: 1.2em;
+}
+
+.label-warning {
+  background-color: #f0ad4c !important;
+  transition: all 0.3s;
 }
 
 .todo-new {
@@ -26,6 +52,11 @@ body {
 
 .todo-list tr td {
   cursor: pointer;
+}
+
+#tag-remove-button {
+  cursor: pointer;
+  font-size: 12px;
 }
 
 #pending-tags {
@@ -38,6 +69,20 @@ td.todo-tick, td.todo-delete {
 
 td.todo-title {
   width: 75%;
+  // max-width: 80%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-all;
+}
+
+.todo-done .todo-title {
+  text-decoration: line-through;
+  color: gray;
+}
+
+.well p::first-letter {
+  font-size: 180%;
+  text-weight: 8px;
 }
 
 @media screen and (min-width: 768px) {

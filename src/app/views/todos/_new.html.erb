@@ -4,12 +4,12 @@
     <div class="input-group">
       <div class="input-group-btn">
         <button class="btn btn-default" id="add-tags-button" type="button" data-toggle="popover">
-          <span class="glyphicon glyphicon-tags" aria-hidden="true"></span>
+          <span class="fa fa-tags" aria-hidden="true"></span>
         </button>
       </div>
       <%= f.text_field :title, placeholder: 'Create new task', class: 'form-control', autofocus: true, 'data-behavior' => 'submit_on_enter' %>
       <span class="input-group-btn">
-        <%= button_tag raw('<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>'), class: 'btn btn-default' %>
+        <%= button_tag raw('<span class="fa fa-plus" aria-hidden="true"></span>'), class: 'btn btn-default' %>
       </span>
     </div>
   <% end %>

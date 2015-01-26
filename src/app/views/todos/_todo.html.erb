@@ -1,22 +1,17 @@
 <tr>
   <td class="todo-tick">
     <h4>
-      <%= best_in_place todo, :completed, :as => :checkbox, :collection => [raw('<span class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>'), raw('<span class="glyphicon glyphicon-check" aria-hidden="true"></span>')] %>
+      <%= best_in_place todo, :completed, :as => :checkbox, :collection => [raw('<span class="fa fa-square-o fa-lg" aria-hidden="true"></span>'), raw('<span class="fa fa-check-square-o fa-lg" aria-hidden="true"></span>')] %>
     </h4>
   </td>
-  <td class="todo-title">
+  <td class="todo-title" data-tags="<%= todo.tag_list %>">
     <h4>
       <%= best_in_place todo, :title, :inner_class => 'form-control' %>
     </h4>
   </td>
-  <td class="todo-tags">
-    <h4>
-      <span class="glyphicon glyphicon-tags" aria-hidden="true"></span>
-    </h4>
-  </td>
   <td>
     <h4>
-      <%= link_to raw('<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>'), todo, method: :delete, data: { confirm: 'Are you sure?' }, remote: true, class: 'todo-delete', title: 'Remove' %>
+      <%= link_to raw('<span class="fa fa-trash-o" aria-hidden="true"></span>'), todo, method: :delete, data: { confirm: 'Are you sure?' }, remote: true, class: 'todo-delete', title: 'Remove' %>
     </h4>
   </td>
 </tr>

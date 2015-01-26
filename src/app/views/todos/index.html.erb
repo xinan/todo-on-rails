@@ -1,52 +1,47 @@
 <div class="container">
-  <div class="title">
-    <h1>Todo on Rails</h1>
+  <div class="header">
+    <nav>
+      <ul class="nav nav-tabs pull-right" role="tablist">
+        <li role="presentation" class="active">
+          <a href="#home" aria-controls="home" role="tab" data-toggle="tab">
+            <span class="fa fa-list"></span> Home
+          </a>
+        </li>
+        <li role="presentation">
+          <a href="#about" aria-controls="about" role="tab" data-toggle="tab">
+            <span class="fa fa-quote-left"></span> About
+          </a>
+        </li>
+      </ul>
+    </nav>
+    <h1 class="text-muted"><span class="fa fa-list-alt fa-lg"></span> Todo on Rails</h1>
   </div>
+  <br>
   
-  <div class="row">
-    <div class="todo-tags col-md-4 col-sm-4">
-      <% @tags.each do |tag| %>
-        <% if tag.to_s == 'Urgent' %>
-          <h4><span class="label label-danger"><%= tag %></span></h4>
-        <% elsif tag.to_s == 'Important' or tag.to_s == 'ASAP' %>
-          <h4><span class="label label-warning"><%= tag %></span></h4>
-        <% else %>
-          <h4><span class="label label-info"><%= tag %></span></h4>
-        <% end %>
-      <% end %>
-    </div>
-    <div class="todo-list col-md-8 col-sm-8">
-      <%= render partial: 'new', locals: {todo: @todo} %>
-      <div class="todo-active panel panel-warning">
-        <div class="panel-heading">
-          <h3 class="panel-title">Pending Tasks <span class="todo-pending-count badge pull-right"><%= @todos.active.length %></span></h3>
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="home">
+      <div class="row">
+        <div class="tags col-md-4 col-sm-4">
+          <a class="tag-filter default-tag-filter" data-remote="true" href="/todos"><span class="label label-default">All</span></a>
+          <div class="all-tags"></div>
         </div>
-        <table class="table table-hover">
-          <tbody>
-              <% @todos.active.each do |task| %>
-              <%= render task %>
-              <% end %>
-          </tbody>
-        </table>
-        <div class="panel-footer">
-          <span class="todo-pending-count"><%= @todos.active.length %></span> remaining
+        <div class="todo col-md-8 col-sm-8">
+          <%= render partial: 'new', locals: {todo: @todo} %>
+          <%= render partial: 'list', locals: {todos: @todos} %>
         </div>
       </div>
-      <div class="todo-done panel panel-success">
-        <div class="panel-heading">
-          <h3 class="panel-title">Completed Tasks <span class="todo-done-count badge pull-right"><%= @todos.done.length %></span></h3>
-        </div>
-        <table class="table table-hover">
-          <tbody>
-            <% @todos.done.each do |task| %>
-            <%= render task %>
-            <% end %>
-          </tbody>
-        </table>
-        <div class="panel-footer">
-          <span class="todo-done-count"><%= @todos.done.length %></span> completed
-        </div>
+    </div>
+    <div role="tabpanel" class="tab-pane" id="about">
+      <div class="well">
+        <p>
+          This is a simple single page todo app done for the 2014 CVWO Assignment 3. <a href="https://github.com/xinan/todo-on-rails"><span class="fa fa-github fa-2x"></span></a>
+        </p>
       </div>
     </div>
   </div>
+
+  <footer class="footer">
+    <p>Copyright &copy; <%= Time.now.year %> Liu Xinan</p>
+  </footer>
+
 </div>

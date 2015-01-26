@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  # Must place before recources to override the show action
+  get 'todos/tags' => 'todos#tags'
   resources :todos
 
   # The priority is based upon order of creation: first created -> highest priority.

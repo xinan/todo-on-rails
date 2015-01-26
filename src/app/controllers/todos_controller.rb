@@ -3,7 +3,27 @@ class TodosController < ApplicationController
   def index
     @todos = Todo
     @todo = Todo.new
-    @tags = ActsAsTaggableOn::Tag.most_used
+    if request.xhr?
+      respond_to do |format|
+        format.html { render :partial => 'list', :locals => {:todos => @todos} }
+      end
+    end
+  end
+
+  def tags
+    @tags = ActsAsTaggableOn::Tag.all
+    respond_to do |format|
+      format.html { render :partial => 'list', :locals => {:todos => Todo.tagged_with('tags')} }
+      format.json { render json: @tags }
+    end
+  end
+
+  def show
+    @todos = Todo.tagged_with(params[:id])
+    respond_to do |format|
+      format.html { render :partial => 'list', :locals => {:todos => @todos} }
+      # format.json { render json: @todos, status: :ok, location: @todos }
+    end
   end
 
   def create
@@ -13,7 +33,7 @@ class TodosController < ApplicationController
     respond_to do |format|
       if @todo.save
         format.html { render :partial => 'todo', :locals => {:todo => @todo} }
-        format.json { render json: @todo, status: :created, location: @todo }
+        # format.json { render json: @todo, status: :created, location: @todo }
       else
         format.json { head :no_content }
       end

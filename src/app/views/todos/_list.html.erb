@@ -1,0 +1,32 @@
+<div class="todo-list">
+  <div class="todo-active panel panel-warning">
+    <div class="panel-heading">
+      <h3 class="panel-title">Pending Tasks <span class="todo-pending-count badge pull-right"><%= todos.active.length %></span></h3>
+    </div>
+    <table class="table table-hover">
+      <tbody>
+          <% todos.active.each do |task| %>
+          <%= render task %>
+          <% end %>
+      </tbody>
+    </table>
+    <div class="panel-footer">
+      <span class="todo-pending-count"><%= todos.active.length %></span> remaining
+    </div>
+  </div>
+  <div class="todo-done panel panel-success">
+    <div class="panel-heading">
+      <h3 class="panel-title">Completed Tasks <span class="todo-done-count badge pull-right"><%= todos.done.length %></span></h3>
+    </div>
+    <table class="table table-hover">
+      <tbody>
+        <% todos.done.each do |task| %>
+        <%= render task %>
+        <% end %>
+      </tbody>
+    </table>
+    <div class="panel-footer">
+      <span class="todo-done-count"><%= todos.done.length %></span> completed
+    </div>
+  </div>
+</div>
