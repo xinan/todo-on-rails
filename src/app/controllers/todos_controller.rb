@@ -22,7 +22,6 @@ class TodosController < ApplicationController
     @todos = Todo.tagged_with(params[:id])
     respond_to do |format|
       format.html { render :partial => 'list', :locals => {:todos => @todos} }
-      # format.json { render json: @todos, status: :ok, location: @todos }
     end
   end
 
@@ -33,7 +32,6 @@ class TodosController < ApplicationController
     respond_to do |format|
       if @todo.save
         format.html { render :partial => 'todo', :locals => {:todo => @todo} }
-        # format.json { render json: @todo, status: :created, location: @todo }
       else
         format.json { head :no_content }
       end
