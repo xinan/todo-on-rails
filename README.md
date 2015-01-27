@@ -7,7 +7,7 @@ This is a todo app for the 2014 CVWO assignment 3.
 * Matric No.: A0130195M
 
 ### Screenshot
-![Screenshot](Screenshot.png) 
+![screenshot](screenshot.png) 
 
 ### Short Write-Up
 See [write_up.pdf](write_up.pdf)
